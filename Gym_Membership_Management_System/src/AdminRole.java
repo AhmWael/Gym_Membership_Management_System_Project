@@ -4,8 +4,13 @@ public class AdminRole {
     private TrainerDatabase database;
 
     public void addTrainer(String trainerID, String name, String email, String speciality, String phoneNumber) {
-        Trainer trainer = new Trainer(trainerID, name, email, speciality, phoneNumber);
-        database.insertRecord(trainer);
+        if(database.contains(trainerID)) {
+            System.out.println("Trainer already exists");
+        } else {
+            Trainer trainer = new Trainer(trainerID, name, email, speciality, phoneNumber);
+            database.insertRecord(trainer);
+            System.out.println("Trainer added successfully with ID: " + trainerID);
+        }
     }
     public ArrayList<Trainer> getListOfTrainers() {
         return database.returnAllRecords();
@@ -14,6 +19,7 @@ public class AdminRole {
         database.deleteRecord(key);
     }
     public void logout() {
-
+        database.saveToFile();
+        System.out.println("Logged out successfully");
     }
 }
