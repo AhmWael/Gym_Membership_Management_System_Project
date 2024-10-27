@@ -69,6 +69,7 @@ public class MemberDatabase implements DatabaseOperations, MemberDatabaseInterfa
     }
     @Override
     public void saveToFile() {
+
         try {
             System.out.println("Saving to file...");
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
