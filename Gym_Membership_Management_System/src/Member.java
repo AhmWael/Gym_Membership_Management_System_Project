@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Member implements StorableData{
     private String memberID;
     private String name;
@@ -15,10 +17,15 @@ public class Member implements StorableData{
         this.status = status;
     }
 
-    public String lineRepresentation(){
-        return this.memberID + "," + this.name + ","
-                + this.membershipType + "," + this.email + ","
-                + this.phoneNumber + "," + this.status;
+    public String lineRepresentation() {
+        return String.join(",",
+            this.memberID,
+            this.name,
+            this.membershipType,
+            this.email,
+            this.phoneNumber,
+            this.status);
+
     }
     public String getSearchKey(){
         return this.memberID;
