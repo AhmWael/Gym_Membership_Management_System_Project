@@ -14,9 +14,12 @@ public class Trainer implements StorableData{
     }
 
     public String lineRepresentation(){
-        return this.trainerID + "," + this.name + ","
-                + this.email + "," + this.speciality + ","
-                + this.phoneNumber;
+        return String.join(",",
+                this.trainerID,
+                this.name,
+                this.email,
+                this.speciality,
+                this.phoneNumber);
     }
 
     public String getSearchKey(){
