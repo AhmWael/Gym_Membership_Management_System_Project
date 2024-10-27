@@ -10,11 +10,9 @@ public class TrainerDatabase implements DatabaseOperations, TrainerDatabaseInter
         try {
             System.out.println("Reading from file");
             BufferedReader reader = new BufferedReader(new FileReader(filename));
-            String line = reader.readLine();
-            while (line!= null) {
-                String[] data = line.split(",");
-                records.add(new Trainer(data[0], data[1], data[2], data[3], data[4]));
-                line = reader.readLine();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                records.add(createRecordFrom(line));
             }
             reader.close();
         } catch (IOException e) {
