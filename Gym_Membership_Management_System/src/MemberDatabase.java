@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class MemberDatabase implements DatabaseOperations{
+public class MemberDatabase implements DatabaseOperations, MemberDatabaseInterface{
     private ArrayList<Member> records;
     private String filename;
 

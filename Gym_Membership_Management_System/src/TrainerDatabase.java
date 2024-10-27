@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class TrainerDatabase implements DatabaseOperations {
+public class TrainerDatabase implements DatabaseOperations, TrainerDatabaseInterface {
     private ArrayList<Trainer> records;
     private String filename;
 
