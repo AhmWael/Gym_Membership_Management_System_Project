@@ -8,6 +8,7 @@ public class MemberDatabase implements DatabaseOperations, MemberDatabaseInterfa
     @Override
     public void readFromFile() {
         try {
+            System.out.println("Reading from file");
             BufferedReader reader = new BufferedReader(new FileReader(filename));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -15,7 +16,8 @@ public class MemberDatabase implements DatabaseOperations, MemberDatabaseInterfa
             }
             reader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("Error reading file \"" + filename + "\"\nPlease try again later\nError: " + e);
         }
     }
     @Override
@@ -49,6 +51,7 @@ public class MemberDatabase implements DatabaseOperations, MemberDatabaseInterfa
     public void insertRecord(Member record) {
         if(!contains(record.getSearchKey())){
             records.add(record);
+            System.out.println("Member added successfully with ID: " + record.getSearchKey());
         }
         else {
             System.out.println("Member already exists");
@@ -59,22 +62,26 @@ public class MemberDatabase implements DatabaseOperations, MemberDatabaseInterfa
         for (Member record : records) {
             if (record.getSearchKey().equals(key)) {
                 records.remove(record);
+                System.out.println("Member deleted successfully with ID: " + key);
                 break;
             }
         }
     }
     @Override
-    public void saveToFile(String filename) {
+    public void saveToFile() {
         try {
+            System.out.println("Saving to file...");
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
             for (Member record : records) {
                 writer.write(record.lineRepresentation());
                 writer.newLine();
             }
             writer.close();
+            System.out.println("Member database saved successfully to file.");
         }
         catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("Error saving to file\nPlease try again later\nError: " + e);
         }
     }
 }
