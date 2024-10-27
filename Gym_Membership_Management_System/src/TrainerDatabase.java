@@ -51,6 +51,9 @@ public class TrainerDatabase implements DatabaseOperations, TrainerDatabaseInter
         if(!contains(record.getSearchKey())){
             records.add(record);
         }
+        else {
+            System.out.println("Trainer already exists");
+        }
     }
     @Override
     public void deleteRecord(String key){
@@ -69,6 +72,7 @@ public class TrainerDatabase implements DatabaseOperations, TrainerDatabaseInter
                 writer.write(record.lineRepresentation());
                 writer.newLine();
             }
+            writer.close();
         }
         catch (IOException e) {
             e.printStackTrace();
