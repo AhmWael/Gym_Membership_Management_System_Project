@@ -16,7 +16,7 @@ public class Class implements StorableData{
     }
 
     public int getAvailableSeats() {
-        return availableSeats;
+        return this.availableSeats;
     }
 
     public void setAvailableSeats(int value) {

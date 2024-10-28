@@ -5,7 +5,7 @@ public class TrainerRole {
     private MemberDatabase memberDatabase;
     private ClassDatabase classDatabase;
     private MemberClassRegistrationDatabase registrationDatabase;
-    
+
     public TrainerRole() {
         this.memberDatabase = new MemberDatabase("Members.txt");
         this.classDatabase = new ClassDatabase("Classes.txt");
@@ -28,6 +28,9 @@ public class TrainerRole {
             Class newClass = new Class(classID, className, trainerID, duration, maxParticipants);
             classDatabase.insertRecord(newClass);
         }
+        else{
+            System.out.println("Class already exists");
+        }
     }
 
     public ArrayList<Class> getListOfClasses() {
@@ -36,12 +39,13 @@ public class TrainerRole {
 
     public boolean registerMemberForClass(String memberID, String classID, LocalDate registrationDate) {
         Class classRecord = classDatabase.getRecord(classID);
-        int availableSeats = classRecord.getAvailableSeats();
         Member memberRecord = memberDatabase.getRecord(memberID);
 
         if (classRecord == null || memberRecord == null) {
             return false;
-        } else if (availableSeats < 1) {
+        }
+        int availableSeats = classRecord.getAvailableSeats();
+        if (availableSeats < 1) {
             return false;
         }
 
@@ -57,13 +61,13 @@ public class TrainerRole {
     public boolean cancelRegistration(String memberID, String classID) {
         Member memberRecord = memberDatabase.getRecord(memberID);
         Class classRecord = classDatabase.getRecord(classID);
-        int availableSeats = classRecord.getAvailableSeats();
-        MemberClassRegistration registration = registrationDatabase.getRecord(memberID + classID);
+        MemberClassRegistration registration = registrationDatabase.getRecord(memberID + "-" + classID);
 
         if (memberRecord == null || classRecord == null || registration == null) {
             return false;
         } else if (registration.getRegistrationDate().isAfter(LocalDate.now().minusDays(3))) {
-            registrationDatabase.deleteRecord(memberID + classID);
+            int availableSeats = classRecord.getAvailableSeats();
+            registrationDatabase.deleteRecord(memberID + "-" + classID);
             classDatabase.getRecord(classID).setAvailableSeats(availableSeats + 1);
             return true;
         }
