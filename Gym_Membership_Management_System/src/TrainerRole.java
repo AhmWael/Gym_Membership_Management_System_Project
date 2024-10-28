@@ -38,8 +38,9 @@ public class TrainerRole {
     }
 
     public boolean registerMemberForClass(String memberID, String classID, LocalDate registrationDate) {
-        Class classRecord = classDatabase.getRecord(classID);
-        Member memberRecord = memberDatabase.getRecord(memberID);
+        Class classRecord = (Class) classDatabase.getRecord(classID);
+        Member memberRecord = (Member) memberDatabase.getRecord(memberID);
+
 
         if (classRecord == null || memberRecord == null) {
             return false;
@@ -53,23 +54,23 @@ public class TrainerRole {
         MemberClassRegistration registration = new MemberClassRegistration(memberID, classID, registrationDate, "Active");
         if (!registrationDatabase.contains(registration.getSearchKey())) {
             registrationDatabase.insertRecord(registration);
-            classDatabase.getRecord(classID).setAvailableSeats(availableSeats - 1);
+            ((Class) classDatabase.getRecord(classID)).setAvailableSeats(availableSeats - 1);
             return true;
         }
         return false;
     }
 
     public boolean cancelRegistration(String memberID, String classID) {
-        Member memberRecord = memberDatabase.getRecord(memberID);
-        Class classRecord = classDatabase.getRecord(classID);
-        MemberClassRegistration registration = registrationDatabase.getRecord(memberID + "-" + classID);
+        Member memberRecord = (Member) memberDatabase.getRecord(memberID);
+        Class classRecord = (Class) classDatabase.getRecord(classID);
+        MemberClassRegistration registration = (MemberClassRegistration) registrationDatabase.getRecord(memberID + "-" + classID);
 
         if (memberRecord == null || classRecord == null || registration == null) {
             return false;
         } else if (registration.getRegistrationDate().isAfter(LocalDate.now().minusDays(3))) {
             int availableSeats = classRecord.getAvailableSeats();
             registration.setRegistrationStatus("canceled");
-            classDatabase.getRecord(classID).setAvailableSeats(availableSeats + 1);
+            ((Class) classDatabase.getRecord(classID)).setAvailableSeats(availableSeats + 1);
             System.out.println("Registration canceled successfully\nRegistration refunded");
             return true;
         }
