@@ -5,16 +5,16 @@ public class TrainerRole {
     private MemberDatabase memberDatabase;
     private ClassDatabase classDatabase;
     private MemberClassRegistrationDatabase registrationDatabase;
-
-    public TrainerRole(MemberDatabase memberDB, ClassDatabase classDB, MemberClassRegistrationDatabase registrationDB) {
-        this.memberDatabase = memberDB;
-        this.classDatabase = classDB;
-        this.registrationDatabase = registrationDB;
+    
+    public TrainerRole() {
+        this.memberDatabase = new MemberDatabase("Members.txt");
+        this.classDatabase = new ClassDatabase("Classes.txt");
+        this.registrationDatabase = new MemberClassRegistrationDatabase("Registrations.txt");
     }
 
     public void addMember(String MemberID, String name, String membershipType, String email, String phoneNumber, String status) {
-        Member member = new Member(MemberID, name, membershipType, email, phoneNumber, status);
         if (!memberDatabase.contains(MemberID)) {
+            Member member = new Member(MemberID, name, membershipType, email, phoneNumber, status);
             memberDatabase.insertRecord(member);
         }
     }
@@ -24,8 +24,8 @@ public class TrainerRole {
     }
 
     public void addClass(String classID, String className, String trainerID, int duration, int maxParticipants) {
-        Class newClass = new Class(classID, className, trainerID, duration, maxParticipants);
         if (!classDatabase.contains(classID)) {
+            Class newClass = new Class(classID, className, trainerID, duration, maxParticipants);
             classDatabase.insertRecord(newClass);
         }
     }
@@ -45,7 +45,7 @@ public class TrainerRole {
             return false;
         }
 
-        MemberClassRegistration registration = new MemberClassRegistration(memberID, classID, "Active", registrationDate);
+        MemberClassRegistration registration = new MemberClassRegistration(memberID, classID, registrationDate, "Active");
         if (!registrationDatabase.contains(registration.getSearchKey())) {
             registrationDatabase.insertRecord(registration);
             classDatabase.getRecord(classID).setAvailableSeats(availableSeats - 1);
