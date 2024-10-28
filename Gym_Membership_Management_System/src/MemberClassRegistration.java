@@ -25,6 +25,10 @@ public class MemberClassRegistration implements StorableData {
         return registrationDate;
     }
 
+    public void setRegistrationStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String getSearchKey() {
         return memberID + "-" + classID;

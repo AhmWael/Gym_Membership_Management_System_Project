@@ -46,6 +46,7 @@ public class TrainerRole {
         }
         int availableSeats = classRecord.getAvailableSeats();
         if (availableSeats < 1) {
+            System.out.println("No available seats");
             return false;
         }
 
@@ -67,8 +68,9 @@ public class TrainerRole {
             return false;
         } else if (registration.getRegistrationDate().isAfter(LocalDate.now().minusDays(3))) {
             int availableSeats = classRecord.getAvailableSeats();
-            registrationDatabase.deleteRecord(memberID + "-" + classID);
+            registration.setRegistrationStatus("canceled");
             classDatabase.getRecord(classID).setAvailableSeats(availableSeats + 1);
+            System.out.println("Registration canceled successfully\nRegistration refunded");
             return true;
         }
         return false;

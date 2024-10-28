@@ -8,13 +8,8 @@ public class AdminRole {
     }
 
     public void addTrainer(String trainerID, String name, String email, String speciality, String phoneNumber) {
-        if(database.contains(trainerID)) {
-            System.out.println("Trainer already exists");
-        } else {
-            Trainer trainer = new Trainer(trainerID, name, email, speciality, phoneNumber);
-            database.insertRecord(trainer);
-            System.out.println("Trainer added successfully with ID: " + trainerID);
-        }
+        Trainer trainer = new Trainer(trainerID, name, email, speciality, phoneNumber);
+        database.insertRecord(trainer);
     }
     public ArrayList<Trainer> getListOfTrainers() {
         return database.returnAllRecords();
