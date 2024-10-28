@@ -3,6 +3,10 @@ import java.util.*;
 public class AdminRole {
     private TrainerDatabase database;
 
+    public AdminRole() {
+        this.database = new TrainerDatabase("Trainers.txt");
+    }
+
     public void addTrainer(String trainerID, String name, String email, String speciality, String phoneNumber) {
         if(database.contains(trainerID)) {
             System.out.println("Trainer already exists");

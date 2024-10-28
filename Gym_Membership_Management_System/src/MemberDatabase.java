@@ -5,6 +5,11 @@ public class MemberDatabase implements DatabaseOperations, MemberDatabaseInterfa
     private ArrayList<Member> records;
     private String filename;
 
+    public MemberDatabase(String filename){
+        this.records = new ArrayList<Member>();
+        this.filename = filename;
+    }
+
     @Override
     public void readFromFile() {
         try {

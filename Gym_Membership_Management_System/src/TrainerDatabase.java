@@ -5,6 +5,11 @@ public class TrainerDatabase implements DatabaseOperations, TrainerDatabaseInter
     private ArrayList<Trainer> records;
     private String filename;
 
+    public TrainerDatabase(String filename){
+        this.records = new ArrayList<Trainer>();
+        this.filename = filename;
+    }
+
     @Override
     public void readFromFile(){
         try {
