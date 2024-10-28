@@ -8,12 +8,13 @@ public class TrainerDatabase implements DatabaseOperations, TrainerDatabaseInter
     public TrainerDatabase(String filename){
         this.records = new ArrayList<Trainer>();
         this.filename = filename;
+        this.readFromFile();
     }
 
     @Override
     public void readFromFile(){
         try {
-            System.out.println("Reading from file");
+            System.out.println("Reading file...");
             BufferedReader reader = new BufferedReader(new FileReader(filename));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -22,7 +23,7 @@ public class TrainerDatabase implements DatabaseOperations, TrainerDatabaseInter
             reader.close();
         } catch (IOException e) {
             //e.printStackTrace();
-            System.out.println("Error reading file \"" + filename + "\"\nPlease try again later\nError: " + e);
+            System.out.println("Error reading file \"" + filename + "\"\nPlease try again later\nError: " + e.getMessage());
         }
     }
     @Override
@@ -67,7 +68,7 @@ public class TrainerDatabase implements DatabaseOperations, TrainerDatabaseInter
         for (Trainer record : records) {
             if (record.getSearchKey().equals(key)) {
                 records.remove(record);
-                System.out.println("Trainer removed successfully with ID: " + key);
+                System.out.println("Trainer deleted successfully with ID: " + key);
                 break;
             }
         }
@@ -86,7 +87,7 @@ public class TrainerDatabase implements DatabaseOperations, TrainerDatabaseInter
         }
         catch (IOException e) {
             //e.printStackTrace();
-            System.out.println("Error saving to file\nPlease try again later\nError: " + e);
+            System.out.println("Error saving to file\nPlease try again later\nError: " + e.getMessage());
         }
     }
 

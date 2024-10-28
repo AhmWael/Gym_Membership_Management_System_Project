@@ -9,11 +9,13 @@ public class MemberClassRegistrationDatabase implements DatabaseOperations {
     public MemberClassRegistrationDatabase(String filename) {
         this.filename = filename;
         this.records = new ArrayList<>();
+        this.readFromFile();
     }
 
     @Override
     public void readFromFile() {
         try {
+            System.out.println("Reading file...");
             BufferedReader reader = new BufferedReader(new FileReader(filename));
             String line = reader.readLine();
             while (line != null) {
@@ -22,7 +24,8 @@ public class MemberClassRegistrationDatabase implements DatabaseOperations {
             }
             reader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error reading file \"" + filename + "\"\nPlease try again later\nError: " + e.getMessage());
+            //e.printStackTrace();
         }
     }
 
@@ -55,14 +58,19 @@ public class MemberClassRegistrationDatabase implements DatabaseOperations {
     }
 
     public void insertRecord(MemberClassRegistration record) {
-        if (contains(record.getSearchKey())) return;
+        if (contains(record.getSearchKey())) {
+            System.out.println("Member Class Registration already exists");
+            return;
+        }
         records.add(record);
+        System.out.println("Member Class Registration added successfully with ID: " + record.getSearchKey());
     }
 
     public void deleteRecord(String key) {
         for (MemberClassRegistration record : records) {
             if (record.getSearchKey().equals(key)) {
                 records.remove(record);
+                System.out.println("Member Class Registration deleted successfully with ID: " + key);
                 return;
             }
         }
@@ -71,14 +79,17 @@ public class MemberClassRegistrationDatabase implements DatabaseOperations {
     @Override
     public void saveToFile() {
         try {
+            System.out.println("Saving to file...");
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
             for (MemberClassRegistration record : records) {
                 writer.write(record.lineRepresentation());
                 writer.newLine();
             }
             writer.close();
+            System.out.println("Member Class Registration database saved successfully to file.");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error saving to file \"" + filename + "\"\nPlease try again later\nError: " + e.getMessage());
+            //e.printStackTrace();
         }
     }
 }

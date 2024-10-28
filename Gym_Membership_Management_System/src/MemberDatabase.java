@@ -8,12 +8,13 @@ public class MemberDatabase implements DatabaseOperations, MemberDatabaseInterfa
     public MemberDatabase(String filename){
         this.records = new ArrayList<Member>();
         this.filename = filename;
+        this.readFromFile();
     }
 
     @Override
     public void readFromFile() {
         try {
-            System.out.println("Reading from file");
+            System.out.println("Reading file...");
             BufferedReader reader = new BufferedReader(new FileReader(filename));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -22,7 +23,7 @@ public class MemberDatabase implements DatabaseOperations, MemberDatabaseInterfa
             reader.close();
         } catch (IOException e) {
             //e.printStackTrace();
-            System.out.println("Error reading file \"" + filename + "\"\nPlease try again later\nError: " + e);
+            System.out.println("Error reading file \"" + filename + "\"\nPlease try again later\nError: " + e.getMessage());
         }
     }
     @Override
@@ -87,7 +88,7 @@ public class MemberDatabase implements DatabaseOperations, MemberDatabaseInterfa
         }
         catch (IOException e) {
             //e.printStackTrace();
-            System.out.println("Error saving to file\nPlease try again later\nError: " + e);
+            System.out.println("Error saving to file\nPlease try again later\nError: " + e.getMessage());
         }
     }
 }

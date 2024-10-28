@@ -27,7 +27,7 @@ public class MemberClassRegistration implements StorableData {
 
     @Override
     public String getSearchKey() {
-        return memberID + classID;
+        return memberID + "-" + classID;
     }
 
     @Override
