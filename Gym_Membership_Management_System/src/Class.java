@@ -5,14 +5,14 @@ public class Class implements StorableData{
     private String className;
     private String trainerID;
     private int availableSeats;
-    private int totalSeats;
+    private int duration;
 
-    public Class(String classID, String className, String trainerID, int availableSeats, int totalSeats) {
+    public Class(String classID, String className, String trainerID, int duration, int availableSeats) {
         this.classID = classID;
         this.className = className;
         this.trainerID = trainerID;
         this.availableSeats = availableSeats;
-        this.totalSeats = totalSeats;
+        this.duration = duration;
     }
 
     public int getAvailableSeats() {
@@ -29,8 +29,8 @@ public class Class implements StorableData{
                 classID,
                 className,
                 trainerID,
-                String.valueOf(availableSeats),
-                String.valueOf(totalSeats));
+                String.valueOf(duration),
+                String.valueOf(availableSeats));
     }
 
     @Override

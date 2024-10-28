@@ -6,7 +6,7 @@ public class MemberClassRegistration implements StorableData {
     private String status;
     private LocalDate registrationDate;
 
-    public MemberClassRegistration(String memberID, String classID, String status, LocalDate registrationDate) {
+    public MemberClassRegistration(String memberID, String classID, LocalDate registrationDate, String status) {
         this.memberID = memberID;
         this.classID = classID;
         this.status = status;

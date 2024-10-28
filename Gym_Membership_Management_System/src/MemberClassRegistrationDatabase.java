@@ -28,7 +28,7 @@ public class MemberClassRegistrationDatabase implements DatabaseOperations {
 
     public MemberClassRegistration createRecordFromLine(String line) {
         String[] data = line.split(",");
-        return new MemberClassRegistration(data[0], data[1], data[2], LocalDate.parse(data[3]));
+        return new MemberClassRegistration(data[0], data[1], LocalDate.parse(data[2]), data[3]);
     }
 
     public ArrayList<MemberClassRegistration> returnAllRecords() {
@@ -55,7 +55,7 @@ public class MemberClassRegistrationDatabase implements DatabaseOperations {
     }
 
     public void insertRecord(MemberClassRegistration record) {
-        if (!contains(record.getSearchKey())) return;
+        if (contains(record.getSearchKey())) return;
         records.add(record);
     }
 

@@ -55,7 +55,7 @@ public class ClassDatabase implements DatabaseOperations {
     }
 
     public void insertRecord(Class record) {
-        if (!contains(record.getSearchKey())) return;
+        if (contains(record.getSearchKey())) return;
         records.add(record);
     }
 
