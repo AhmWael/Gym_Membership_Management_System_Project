@@ -11,7 +11,7 @@ public class AdminRole {
         Trainer trainer = new Trainer(trainerID, name, email, speciality, phoneNumber);
         database.insertRecord(trainer);
     }
-    public ArrayList<Trainer> getListOfTrainers() {
+    public ArrayList<StorableData> getListOfTrainers() {
         return database.returnAllRecords();
     }
     public void removeTrainer(String key) {

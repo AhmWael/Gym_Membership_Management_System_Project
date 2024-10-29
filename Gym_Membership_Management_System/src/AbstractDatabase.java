@@ -1,12 +1,12 @@
 import java.io.*;
 import java.util.*;
 
-public abstract class AbstractDatabase implements DatabaseOperations{
-    protected ArrayList<Object> records;
+public abstract class AbstractDatabase{
+    protected ArrayList<StorableData> records;
     protected String filename;
 
     public AbstractDatabase(String filename) {
-        this.records = new ArrayList<>();
+        this.records = new ArrayList<StorableData>();
         this.filename = filename;
         this.readFromFile();
     }
@@ -29,8 +29,8 @@ public abstract class AbstractDatabase implements DatabaseOperations{
         try {
             System.out.println("Saving to file...");
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
-            for (Object record : records) {
-                writer.write(lineRepresentation(record));
+            for (StorableData record : records) {
+                writer.write(record.lineRepresentation());
                 writer.newLine();
             }
             writer.close();
@@ -41,35 +41,35 @@ public abstract class AbstractDatabase implements DatabaseOperations{
     }
 
     public boolean contains(String key) {
-        for (Object record : records) {
-            if (getSearchKey(record).equals(key)) {
+        for (StorableData record : records) {
+            if (record.getSearchKey().equals(key)) {
                 return true;
             }
         }
         return false;
     }
 
-    public Object getRecord(String key) {
-        for (Object record : records) {
-            if (getSearchKey(record).equals(key)) {
+    public StorableData getRecord(String key) {
+        for (StorableData record : records) {
+            if (record.getSearchKey().equals(key)) {
                 return record;
             }
         }
         return null;
     }
 
-    public void insertRecord(Object record) {
-        if (!contains(getSearchKey(record))) {
+    public void insertRecord(StorableData record) {
+        if (!contains(record.getSearchKey())) {
             records.add(record);
-            System.out.println("Record added successfully with ID: " + getSearchKey(record));
+            System.out.println("Record added successfully with ID: " + record.getSearchKey());
         } else {
             System.out.println("Record already exists");
         }
     }
 
     public void deleteRecord(String key) {
-        for (Object record : records) {
-            if (getSearchKey(record).equals(key)) {
+        for (StorableData record : records) {
+            if (record.getSearchKey().equals(key)) {
                 records.remove(record);
                 System.out.println("Record deleted successfully with ID: " + key);
                 break;
@@ -77,7 +77,10 @@ public abstract class AbstractDatabase implements DatabaseOperations{
         }
     }
 
-    protected abstract Object createRecordFrom(String line);
-    protected abstract String lineRepresentation(Object record);
-    protected abstract String getSearchKey(Object record);
+    public ArrayList<StorableData> returnAllRecords() {
+        return records;
+    }
+
+    public abstract StorableData createRecordFrom(String line);
+
 }

@@ -19,7 +19,7 @@ public class TrainerRole {
         }
     }
 
-    public ArrayList<Member> getListOfMembers() {
+    public ArrayList<StorableData> getListOfMembers() {
         return memberDatabase.returnAllRecords();
     }
 
@@ -34,7 +34,11 @@ public class TrainerRole {
     }
 
     public ArrayList<Class> getListOfClasses() {
-        return classDatabase.returnAllRecords();
+        ArrayList<Class> classes = new ArrayList<Class>();
+        for (StorableData record : classDatabase.returnAllRecords()) {
+            classes.add((Class) record);
+        }
+        return classes;
     }
 
     public boolean registerMemberForClass(String memberID, String classID, LocalDate registrationDate) {
@@ -63,7 +67,7 @@ public class TrainerRole {
     public boolean cancelRegistration(String memberID, String classID) {
         Member memberRecord = (Member) memberDatabase.getRecord(memberID);
         Class classRecord = (Class) classDatabase.getRecord(classID);
-        MemberClassRegistration registration = (MemberClassRegistration) registrationDatabase.getRecord(memberID + "-" + classID);
+        MemberClassRegistration registration = (MemberClassRegistration) registrationDatabase.getRecord(memberID + classID);
 
         if (memberRecord == null || classRecord == null || registration == null) {
             return false;
@@ -77,7 +81,7 @@ public class TrainerRole {
         return false;
     }
 
-    public ArrayList<MemberClassRegistration> getListOfRegistrations() {
+    public ArrayList<StorableData> getListOfRegistrations() {
         return registrationDatabase.returnAllRecords();
     }
 
