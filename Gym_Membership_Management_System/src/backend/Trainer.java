@@ -1,3 +1,5 @@
+package backend;
+
 public class Trainer implements StorableData{
     private String trainerID;
     private String name;

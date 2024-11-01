@@ -1,3 +1,5 @@
+package backend;
+
 import java.util.StringJoiner;
 
 public class Class implements StorableData{
