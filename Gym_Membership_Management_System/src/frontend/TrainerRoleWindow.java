@@ -1,6 +1,7 @@
 package frontend;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,6 +19,8 @@ public class TrainerRoleWindow extends JFrame {
 
     public TrainerRoleWindow() {
         setContentPane(trainerRolePanel);
+        setSize(new Dimension(640, 480));
+        setLocationRelativeTo(null);
         setVisible(true);
 
         addMemberButton.addActionListener(new ActionListener() {

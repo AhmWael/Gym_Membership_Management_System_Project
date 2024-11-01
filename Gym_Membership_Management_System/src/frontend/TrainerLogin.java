@@ -2,6 +2,7 @@ package frontend;
 import constants.LoginCredentials;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
@@ -13,8 +14,10 @@ public class TrainerLogin extends JFrame implements LoginCredentials {
     private JButton loginButton;
 
     public TrainerLogin() {
-        setVisible(true);
         setContentPane(TrainerLoginPanel);
+        setSize(new Dimension(640, 480));
+        setLocationRelativeTo(null);
+        setVisible(true);
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
