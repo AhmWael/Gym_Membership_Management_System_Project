@@ -27,18 +27,21 @@ public class AddMemberWindow extends JFrame{
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(idTF.getText().isEmpty() || nameTF.getText().isEmpty()
-                        || emailTF.getText().isEmpty() || memTypeTF.getText().isEmpty()
-                        || phoneTF.getText().isEmpty() || statusTF.getText().isEmpty())
+                String ID = idTF.getText();
+                String name = nameTF.getText();
+                String email = emailTF.getText();
+                String memType = memTypeTF.getText();
+                String phone = phoneTF.getText();
+                String status = statusTF.getText();
+
+                if(ID.isEmpty() || name.isEmpty() || email.isEmpty() || memType.isEmpty() || phone.isEmpty() || status.isEmpty())
                     JOptionPane.showMessageDialog(null, "Please fill all the fields");
-                else if (trainer.getListOfMembers().contains(idTF.getText())) {
-                    JOptionPane.showMessageDialog(null, "The member with ID: " + idTF.getText() + " already exists!");
+                else if (trainer.getListOfMembers().contains(ID)) {
+                    JOptionPane.showMessageDialog(null, "The member with ID: " + ID + " already exists!");
                 } else {
                     setVisible(false);
-                    trainer.addMember(idTF.getText(), nameTF.getText()
-                            , emailTF.getText(), memTypeTF.getText()
-                            , phoneTF.getText(), statusTF.getText());
-                    JOptionPane.showMessageDialog(null, "The member with ID: " + idTF.getText() + " added successfully");
+                    trainer.addMember(ID, name, email, memType, phone, status);
+                    JOptionPane.showMessageDialog(null, "The member with ID: " + ID + " added successfully");
                     dispose();
                     mainForm.setVisible(true);
 
