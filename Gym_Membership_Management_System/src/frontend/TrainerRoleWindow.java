@@ -38,7 +38,7 @@ public class TrainerRoleWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-//                new ViewMembersWindow();
+                new ViewMembersWindow(TrainerRoleWindow.this, trainer);
             }
         });
         addClassButton.addActionListener(new ActionListener() {
