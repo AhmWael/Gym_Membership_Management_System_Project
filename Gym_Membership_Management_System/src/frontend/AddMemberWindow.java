@@ -16,9 +16,10 @@ public class AddMemberWindow extends JFrame{
     private JButton addButton;
     private JPanel AddMemberPanel;
 
-    //private final MainForm mainForm;
+    private final TrainerRoleWindow mainForm;
 
-    public AddMemberWindow(TrainerRole trainer) {
+    public AddMemberWindow(TrainerRoleWindow mainForm, TrainerRole trainer) {
+        this.mainForm = mainForm;
         setContentPane(AddMemberPanel);
         setSize(new Dimension(640, 480));
         setLocationRelativeTo(null);
@@ -38,6 +39,9 @@ public class AddMemberWindow extends JFrame{
                             , emailTF.getText(), memTypeTF.getText()
                             , phoneTF.getText(), statusTF.getText());
                     JOptionPane.showMessageDialog(null, "The member with ID: " + idTF.getText() + " added successfully");
+                    dispose();
+                    mainForm.setVisible(true);
+
                 }
             }
         });
