@@ -52,28 +52,28 @@ public class TrainerRoleWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-//                new ViewClassesWindow();
+                new ViewClassesWindow(TrainerRoleWindow.this, trainer);
             }
         });
         registerMemberForClassButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-//                new RegisterMemberForClassWindow();
+//                new RegisterMemberForClassWindow(TrainerRoleWindow.this, trainer);
             }
         });
         cancelRegistrationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-//                new CancelRegistrationWindow();
+//                new CancelRegistrationWindow(TrainerRoleWindow.this, trainer);
             }
         });
         viewRegistrationsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-//                new ViewRegistrationsWindow();
+//                new ViewRegistrationsWindow(TrainerRoleWindow.this, trainer);
             }
         });
         logoutButton.addActionListener(new ActionListener() {
