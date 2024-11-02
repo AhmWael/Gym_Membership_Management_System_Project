@@ -1,4 +1,5 @@
 package frontend;
+import backend.TrainerRole;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,10 @@ public class TrainerRoleWindow extends JFrame {
     private JButton logoutButton;
     private JPanel trainerRolePanel;
 
-    public TrainerRoleWindow() {
+    private TrainerRole trainer;
+
+    public TrainerRoleWindow(TrainerRole trainer) {
+        this.trainer = trainer;
         setContentPane(trainerRolePanel);
         setSize(new Dimension(640, 480));
         setLocationRelativeTo(null);
@@ -27,7 +31,7 @@ public class TrainerRoleWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new AddMemberWindow();
+                new AddMemberWindow(trainer);
             }
         });
         viewMembersButton.addActionListener(new ActionListener() {

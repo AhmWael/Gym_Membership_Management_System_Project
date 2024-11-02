@@ -1,5 +1,6 @@
 package frontend;
 import constants.LoginCredentials;
+import backend.TrainerRole;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +27,7 @@ public class TrainerLogin extends JFrame implements LoginCredentials {
                 } else if(usernameTF.getText().equals(TRAINER_USERNAME) && Arrays.equals(passTF.getPassword(), TRAINER_PASSWORD.toCharArray())) {
                     JOptionPane.showMessageDialog(null, "Login successful");
                     setVisible(false);
-                    new TrainerRoleWindow();
+                    new TrainerRoleWindow(new TrainerRole());
                 } else {
                     JOptionPane.showMessageDialog(null, "Invalid credentials");
                     usernameTF.setText("");
@@ -34,5 +35,9 @@ public class TrainerLogin extends JFrame implements LoginCredentials {
                 }
             }
         });
+    }
+
+    public static void main(String[] args) {
+        new TrainerLogin();
     }
 }
