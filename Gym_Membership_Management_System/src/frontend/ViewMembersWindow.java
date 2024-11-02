@@ -16,6 +16,7 @@ public class ViewMembersWindow extends JFrame {
         ViewMembersPanel.setLayout(new BorderLayout());
         setSize(new Dimension(640, 480));
         setLocationRelativeTo(null);
+        setTitle("View Members");
         //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         String[] columnNames = {"ID", "Name", "Email", "Membership Type", "Phone Number", "Status"};

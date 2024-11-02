@@ -16,6 +16,7 @@ public class ViewClassesWindow extends JFrame {
         ViewClassesPanel.setLayout(new BorderLayout());
         setSize(640, 480);
         setLocationRelativeTo(null);
+        setTitle("View Classes");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         String[] columnNames = {"Class ID", "Class Name", "Trainer ID", "Duration", "Max Participants"};

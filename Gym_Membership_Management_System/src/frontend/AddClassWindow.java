@@ -22,6 +22,7 @@ public class AddClassWindow extends JFrame {
         setContentPane(AddClassPanel);
         setSize(new Dimension(640, 480));
         setLocationRelativeTo(null);
+        setTitle("Add Class");
         setVisible(true);
         addButton.addActionListener(new ActionListener() {
             @Override

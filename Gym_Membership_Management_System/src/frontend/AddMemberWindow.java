@@ -23,6 +23,7 @@ public class AddMemberWindow extends JFrame{
         setContentPane(AddMemberPanel);
         setSize(new Dimension(640, 480));
         setLocationRelativeTo(null);
+        setTitle("Add Member");
         setVisible(true);
         addButton.addActionListener(new ActionListener() {
             @Override

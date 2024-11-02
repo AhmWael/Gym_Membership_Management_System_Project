@@ -18,6 +18,7 @@ public class TrainerLogin extends JFrame implements LoginCredentials {
         setContentPane(TrainerLoginPanel);
         setSize(new Dimension(640, 480));
         setLocationRelativeTo(null);
+        setTitle("Trainer Login");
         setVisible(true);
         loginButton.addActionListener(new ActionListener() {
             @Override

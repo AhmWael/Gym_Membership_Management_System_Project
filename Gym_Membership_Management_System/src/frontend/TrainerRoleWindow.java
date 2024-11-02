@@ -25,6 +25,7 @@ public class TrainerRoleWindow extends JFrame {
         setContentPane(trainerRolePanel);
         setSize(new Dimension(640, 480));
         setLocationRelativeTo(null);
+        setTitle("Trainer Role");
         setVisible(true);
 
         addMemberButton.addActionListener(new ActionListener() {
