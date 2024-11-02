@@ -31,49 +31,49 @@ public class TrainerRoleWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new AddMemberWindow(trainer);
+//                new AddMemberWindow(trainer);
             }
         });
         viewMembersButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new ViewMembersWindow();
+//                new ViewMembersWindow();
             }
         });
         addClassButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new AddClassWindow();
+//                new AddClassWindow();
             }
         });
         viewClassesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new ViewClassesWindow();
+//                new ViewClassesWindow();
             }
         });
         registerMemberForClassButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new RegisterMemberForClassWindow();
+//                new RegisterMemberForClassWindow();
             }
         });
         cancelRegistrationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new CancelRegistrationWindow();
+//                new CancelRegistrationWindow();
             }
         });
         viewRegistrationsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new ViewRegistrationsWindow();
+//                new ViewRegistrationsWindow();
             }
         });
         logoutButton.addActionListener(new ActionListener() {
