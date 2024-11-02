@@ -4,10 +4,13 @@ import backend.TrainerRole;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ViewClassesWindow extends JFrame {
     private JTable classesTable;
     private JPanel ViewClassesPanel;
+    private JButton backButton;
     private final TrainerRoleWindow mainForm;
 
     public ViewClassesWindow(TrainerRoleWindow mainForm, TrainerRole trainer) {
@@ -28,6 +31,15 @@ public class ViewClassesWindow extends JFrame {
         }
         classesTable = new JTable(data, columnNames);
         ViewClassesPanel.add(new JScrollPane(classesTable));
+        ViewClassesPanel.add(backButton, BorderLayout.SOUTH);
         setVisible(true);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                dispose();
+                mainForm.setVisible(true);
+            }
+        });
     }
 }
