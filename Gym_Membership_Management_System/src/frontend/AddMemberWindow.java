@@ -15,6 +15,8 @@ public class AddMemberWindow extends JFrame{
     private JTextField statusTF;
     private JButton addButton;
     private JPanel AddMemberPanel;
+    private JButton exitButton;
+    private JButton backButton;
 
     private final TrainerRoleWindow mainForm;
 
@@ -46,6 +48,23 @@ public class AddMemberWindow extends JFrame{
                     dispose();
                     mainForm.setVisible(true);
 
+                }
+            }
+        });
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                dispose();
+                mainForm.setVisible(true);
+            }
+        });
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int response = JOptionPane.showConfirmDialog(null, "Unsaved changes will be lost! Do you wish to continue?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+                if (response == JOptionPane.YES_OPTION) {
+                    System.exit(0);
                 }
             }
         });

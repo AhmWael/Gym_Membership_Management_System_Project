@@ -80,6 +80,7 @@ public class TrainerRoleWindow extends JFrame {
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                trainer.logout();
                 setVisible(false);
                 new TrainerLogin();
             }
