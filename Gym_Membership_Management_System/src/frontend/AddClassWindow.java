@@ -34,7 +34,7 @@ public class AddClassWindow extends JFrame {
 
                 if(classID.isEmpty() || className.isEmpty() || trainerID.isEmpty() || duration.isEmpty() || maxParti.isEmpty())
                     JOptionPane.showMessageDialog(null, "Please fill all the fields");
-                else if (trainer.getListOfClasses().contains(classID)) {
+                else if (trainer.getListOfClasses().stream().anyMatch(Class -> Class.getSearchKey().equals(classID))) {
                     JOptionPane.showMessageDialog(null, "The class with ID: " + classID + " already exists!");
                 } else {
                     setVisible(false);

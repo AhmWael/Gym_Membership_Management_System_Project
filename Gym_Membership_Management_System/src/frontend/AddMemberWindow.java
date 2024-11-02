@@ -36,7 +36,7 @@ public class AddMemberWindow extends JFrame{
 
                 if(ID.isEmpty() || name.isEmpty() || email.isEmpty() || memType.isEmpty() || phone.isEmpty() || status.isEmpty())
                     JOptionPane.showMessageDialog(null, "Please fill all the fields");
-                else if (trainer.getListOfMembers().contains(ID)) {
+                else if (trainer.getListOfMembers().stream().anyMatch(member -> member.getSearchKey().equals(ID))) {
                     JOptionPane.showMessageDialog(null, "The member with ID: " + ID + " already exists!");
                 } else {
                     setVisible(false);
