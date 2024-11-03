@@ -23,9 +23,9 @@ public class ViewRegistrationsWindow extends JFrame{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         String[] columnNames = {"Member ID", "Class ID", "Registrations Date"};
-        String[][] data = new String[trainer.getListOfClasses().size()][3];
-        for (int i = 0; i < trainer.getListOfClasses().size(); i++) {
-            String dataLine = trainer.getListOfClasses().get(i).lineRepresentation();
+        String[][] data = new String[trainer.getListOfRegistrations().size()][3];
+        for (int i = 0; i < trainer.getListOfRegistrations().size(); i++) {
+            String dataLine = trainer.getListOfRegistrations().get(i).lineRepresentation();
             String[] dataSeparated = dataLine.split(",");
             data[i] = dataSeparated;
         }

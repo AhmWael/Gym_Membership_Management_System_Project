@@ -13,6 +13,7 @@ public class TrainerLogin extends JFrame implements LoginCredentials {
     private JTextField usernameTF;
     private JPasswordField passTF;
     private JButton loginButton;
+    private JButton cancelButton;
 
     public TrainerLogin() {
         setContentPane(TrainerLoginPanel);
@@ -35,6 +36,14 @@ public class TrainerLogin extends JFrame implements LoginCredentials {
                     usernameTF.setText("");
                     passTF.setText("");
                 }
+            }
+        });
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                dispose();
+                new MainWindow();
             }
         });
     }
