@@ -30,6 +30,17 @@ public class MainWindow extends JFrame{
     }
 
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+//            Font customFont = new Font("Arial", Font.PLAIN, 14);  // Customize as needed
+//            UIManager.put("Label.font", customFont);
+//            UIManager.put("Button.font", customFont);
+//            UIManager.put("TextField.font", customFont);
+//            UIManager.put("TextArea.font", customFont);
+//            UIManager.put("Table.font", customFont);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         MainWindow win = new MainWindow();
     }
 }
