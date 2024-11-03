@@ -64,5 +64,6 @@ public class CancelRegistrationWindow extends JFrame{
                 }
             }
         });
+        getRootPane().setDefaultButton(cancelRegistrationButton);
     }
 }

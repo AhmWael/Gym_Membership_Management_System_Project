@@ -46,5 +46,6 @@ public class TrainerLogin extends JFrame implements LoginCredentials {
                 new MainWindow();
             }
         });
+        getRootPane().setDefaultButton(loginButton);
     }
 }

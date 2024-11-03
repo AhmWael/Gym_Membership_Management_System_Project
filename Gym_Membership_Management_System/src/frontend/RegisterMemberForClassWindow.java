@@ -109,6 +109,7 @@ public class RegisterMemberForClassWindow extends JFrame {
                 }
             }
         });
+        getRootPane().setDefaultButton(registerButton);
 
     }
     public static class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {

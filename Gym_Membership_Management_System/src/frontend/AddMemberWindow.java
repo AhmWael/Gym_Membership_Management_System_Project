@@ -68,6 +68,7 @@ public class AddMemberWindow extends JFrame{
                 }
             }
         });
+        getRootPane().setDefaultButton(addButton);
     }
 
 

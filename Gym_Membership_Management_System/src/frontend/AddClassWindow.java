@@ -65,5 +65,6 @@ public class AddClassWindow extends JFrame {
                 }
             }
         });
+        getRootPane().setDefaultButton(addButton);
     }
 }
