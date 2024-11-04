@@ -95,9 +95,19 @@ public class RegisterMemberForClassWindow extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                dispose();
-                mainForm.setVisible(true);
+                if(memIDTF.getText().isEmpty() && classIDTF.getText().isEmpty()) {
+                    setVisible(false);
+                    dispose();
+                    mainForm.setVisible(true);
+                }
+                else {
+                    int response = JOptionPane.showConfirmDialog(null, "Unsaved changes will be lost! Do you wish to continue?", "Confirm Back", JOptionPane.YES_NO_OPTION);
+                    if (response == JOptionPane.YES_OPTION) {
+                        setVisible(false);
+                        dispose();
+                        mainForm.setVisible(true);
+                    }
+                }
             }
         });
         exitButton.addActionListener(new ActionListener() {
