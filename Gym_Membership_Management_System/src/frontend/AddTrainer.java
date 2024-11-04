@@ -8,12 +8,17 @@ import constants.FileNames;
 
 public class AddTrainer extends JFrame {
     private JPanel AddTrainerPanel;
-    private JTextField textField1;
-    private JButton button1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
+    private JTextField idField;
+    private JTextField nameField;
+    private JTextField emailField;
+    private JTextField specialtyField;
+    private JTextField phoneNumberField;
+    private JButton addButton;
+    private JLabel idLabel;
+    private JLabel nameLabel;
+    private JLabel emailLabel;
+    private JLabel specialtyLabel;
+    private JLabel phoneNumberLabel;
 
     public AddTrainer() {
         setVisible(true);
@@ -22,19 +27,27 @@ public class AddTrainer extends JFrame {
         setLocationRelativeTo(null);
         setContentPane(AddTrainerPanel);
 
-        button1.addActionListener(e -> {
-            String ID = textField1.getText();
-            String name = textField2.getText();
-            String email = textField3.getText();
-            String specialty = textField4.getText();
-            String phoneNumebr = textField5.getText();
+        addButton.addActionListener(e -> {
+            String ID = idField.getText();
+            String name = nameField.getText();
+            String email = emailField.getText();
+            String specialty = specialtyField.getText();
+            String phoneNumber = phoneNumberField.getText();
 
-
-            if (!ID.isEmpty() && !name.isEmpty() && !email.isEmpty() && !specialty.isEmpty() && !phoneNumebr.isEmpty()) {
+            if (!ID.isEmpty() && !name.isEmpty() && !email.isEmpty() && !specialty.isEmpty() && !phoneNumber.isEmpty()) {
                 TrainerDatabase trainerDB = new TrainerDatabase(FileNames.TRAINER_FILENAME);
                 if (trainerDB.contains(ID)) {
                     JOptionPane.showMessageDialog(null, "The trainer with ID = " + ID + " already exists.", "Error", JOptionPane.ERROR_MESSAGE);
-                } else (new AdminRole()).addTrainer(ID, name, email, specialty, phoneNumebr);
+                } else {
+                    Trainer trainer1 = new Trainer(ID, name, email, specialty, phoneNumber);
+                    trainerDB.insertRecord(trainer1);
+                    trainerDB.saveToFile();
+                    for (Trainer trainer : trainerDB.returnAllRecords().toArray(new Trainer[0])) {
+                        System.out.println(trainer.lineRepresentation());
+                    }
+                    JOptionPane.showMessageDialog(null, "Trainer with ID = " + ID + " added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    setVisible(false);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Some fields are empty.", "Error", JOptionPane.ERROR_MESSAGE);
             }

@@ -21,10 +21,12 @@ public class AdminLogin extends JFrame implements constants.LoginCredentials {
             if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
                 System.out.println("Login Successful");
                 setVisible(false);
-                new AdminRole();
+                passTF.setText("");
+                new AdminRoleWindow(this);
             } else {
                 System.out.println("Login Failed");
                 JOptionPane.showMessageDialog(null, "Invalid Credentials", "Error", JOptionPane.ERROR_MESSAGE);
+                passTF.setText("");
             }
         });
     }

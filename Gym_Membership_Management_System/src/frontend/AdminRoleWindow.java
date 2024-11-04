@@ -1,15 +1,17 @@
 package frontend;
 
+import backend.AdminRole;
+
 import javax.swing.*;
 
-public class AdminRole extends JFrame {
+public class AdminRoleWindow extends JFrame {
     private JPanel AdminRolePanel;
     private JButton button1;
     private JButton button2;
     private JButton button3;
     private JButton button4;
 
-    public AdminRole() {
+    public AdminRoleWindow(AdminLogin parent) {
         setVisible(true);
         setSize(320, 480);
         setTitle("Admin Role");
@@ -22,18 +24,20 @@ public class AdminRole extends JFrame {
         });
 
         button2.addActionListener(e -> {
-            System.out.println("Add Member");
-//            new AddMember();
+            new RemoveTrainer();
         });
 
         button3.addActionListener(e -> {
-            System.out.println("View Members");
-//            new ViewMembers();
+            System.out.println("View Trainers");
+            new ViewTrainers();
         });
 
         button4.addActionListener(e -> {
-            System.out.println("View Trainers");
-//            new ViewTrainers();
+            System.out.println("Logout");
+            new AdminRole().logout();
+            JOptionPane.showMessageDialog(null, "Logged out successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+            parent.setVisible(true);
         });
     }
 }
