@@ -75,7 +75,8 @@ public class TrainerRole {
             return false;
         } else if (registration.getRegistrationDate().isAfter(LocalDate.now().minusDays(3))) {
             int availableSeats = classRecord.getAvailableSeats();
-            registration.setRegistrationStatus("canceled");
+            registrationDatabase.deleteRecord(registration.getSearchKey());
+            //registration.setRegistrationStatus("canceled");
             ((Class) classDatabase.getRecord(classID)).setAvailableSeats(availableSeats + 1);
             System.out.println("Registration canceled successfully\nRegistration refunded");
             return true;
