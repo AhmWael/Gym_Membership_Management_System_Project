@@ -1,5 +1,7 @@
 package frontend;
 
+import com.sun.tools.javac.Main;
+
 import javax.swing.*;
 
 public class AdminLogin extends JFrame implements constants.LoginCredentials {
@@ -7,10 +9,11 @@ public class AdminLogin extends JFrame implements constants.LoginCredentials {
     private JTextField usernameTF;
     private JPasswordField passTF;
     private JButton loginButton;
+    private JButton cancelButton;
 
-    public AdminLogin() {
+    public AdminLogin(MainWindow parent) {
         setVisible(true);
-        setSize(320, 240);
+        setSize(640, 480);
         setTitle("Admin Login");
         setLocationRelativeTo(null);
         setContentPane(TrainerLoginPanel);
@@ -28,6 +31,12 @@ public class AdminLogin extends JFrame implements constants.LoginCredentials {
                 JOptionPane.showMessageDialog(null, "Invalid Credentials", "Error", JOptionPane.ERROR_MESSAGE);
                 passTF.setText("");
             }
+        });
+
+        cancelButton.addActionListener(e -> {
+            System.out.println("Cancel");
+            dispose();
+            parent.setVisible(true);
         });
     }
 }

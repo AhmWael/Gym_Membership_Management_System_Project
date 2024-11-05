@@ -26,7 +26,7 @@ public class MainWindow extends JFrame{
         AdminButton.addActionListener(e -> {
             System.out.println("Admin Role");
             setVisible(false);
-            new AdminLogin();
+            new AdminLogin(this);
         });
 
         TrainerButton.addActionListener(e -> {

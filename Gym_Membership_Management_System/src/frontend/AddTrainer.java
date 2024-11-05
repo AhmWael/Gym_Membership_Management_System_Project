@@ -1,6 +1,7 @@
 package frontend;
 
 import javax.swing.*;
+
 import backend.AdminRole;
 import backend.Trainer;
 import backend.TrainerDatabase;
@@ -19,10 +20,11 @@ public class AddTrainer extends JFrame {
     private JLabel emailLabel;
     private JLabel specialtyLabel;
     private JLabel phoneNumberLabel;
+    private JButton cancelButton;
 
     public AddTrainer() {
         setVisible(true);
-        setSize(320, 240);
+        setSize(480, 560);
         setTitle("Add Trainer");
         setLocationRelativeTo(null);
         setContentPane(AddTrainerPanel);
@@ -51,6 +53,11 @@ public class AddTrainer extends JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Some fields are empty.", "Error", JOptionPane.ERROR_MESSAGE);
             }
+        });
+
+        cancelButton.addActionListener(e -> {
+            System.out.println("Cancel");
+            dispose();
         });
     }
 }
