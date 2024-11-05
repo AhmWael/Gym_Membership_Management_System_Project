@@ -14,6 +14,7 @@ public class MainWindow extends JFrame{
     private JPanel MainWindowPanel;
     private JButton AdminButton;
     private JButton TrainerButton;
+    private JButton exitButton;
 
     public MainWindow() {
         setVisible(true);
@@ -33,6 +34,10 @@ public class MainWindow extends JFrame{
             System.out.println("Trainer Role");
             setVisible(false);
             new TrainerLogin();
+        });
+
+        exitButton.addActionListener(e -> {
+            System.exit(0);
         });
     }
 
