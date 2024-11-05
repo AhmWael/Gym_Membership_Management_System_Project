@@ -59,5 +59,6 @@ public class AddTrainer extends JFrame {
             System.out.println("Cancel");
             dispose();
         });
+        getRootPane().setDefaultButton(addButton);
     }
 }

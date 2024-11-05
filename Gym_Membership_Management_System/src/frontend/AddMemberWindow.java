@@ -38,13 +38,13 @@ public class AddMemberWindow extends JFrame{
                 String status = statusTF.getText();
 
                 if(ID.isEmpty() || name.isEmpty() || email.isEmpty() || memType.isEmpty() || phone.isEmpty() || status.isEmpty())
-                    JOptionPane.showMessageDialog(null, "Please fill all the fields");
+                    JOptionPane.showMessageDialog(null, "Please fill all the fields", "Error", JOptionPane.ERROR_MESSAGE);
                 else if (trainer.getListOfMembers().stream().anyMatch(member -> member.getSearchKey().equals(ID))) {
-                    JOptionPane.showMessageDialog(null, "The member with ID: " + ID + " already exists!");
+                    JOptionPane.showMessageDialog(null, "The member with ID: " + ID + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     setVisible(false);
                     trainer.addMember(ID, name, email, memType, phone, status);
-                    JOptionPane.showMessageDialog(null, "The member with ID: " + ID + " added successfully");
+                    JOptionPane.showMessageDialog(null, "The member with ID: " + ID + " added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                     mainForm.setVisible(true);
 

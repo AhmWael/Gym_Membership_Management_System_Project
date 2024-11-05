@@ -82,6 +82,7 @@ public class TrainerRoleWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 trainer.logout();
                 setVisible(false);
+                dispose();
                 new TrainerLogin();
             }
         });

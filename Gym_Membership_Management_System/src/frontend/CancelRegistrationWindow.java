@@ -29,21 +29,21 @@ public class CancelRegistrationWindow extends JFrame{
                 String memID = memIDTF.getText();
                 String classID = classIDTF.getText();
                 if(memID.isEmpty() || classID.isEmpty())
-                    JOptionPane.showMessageDialog(null, "Please fill all the fields");
+                    JOptionPane.showMessageDialog(null, "Please fill all the fields", "Error", JOptionPane.ERROR_MESSAGE);
                 else if (trainer.getListOfClasses().stream().noneMatch(Class -> Class.getSearchKey().equals(classID))) {
-                    JOptionPane.showMessageDialog(null, "The class with ID: " + classID + " does not exist!");
+                    JOptionPane.showMessageDialog(null, "The class with ID: " + classID + " does not exist!", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (trainer.getListOfMembers().stream().noneMatch(Member -> Member.getSearchKey().equals(memID))) {
-                    JOptionPane.showMessageDialog(null, "The member with ID: " + memID + " does not exist!");
+                    JOptionPane.showMessageDialog(null, "The member with ID: " + memID + " does not exist!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 else{
                     if(trainer.cancelRegistration(memID, classID)){
                         setVisible(false);
-                        JOptionPane.showMessageDialog(null, "The registration for member with ID: " + memID + " for class with ID: " + classID + " has been cancelled successfully");
+                        JOptionPane.showMessageDialog(null, "The registration for member with ID: " + memID + " for class with ID: " + classID + " has been cancelled successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                         dispose();
                         mainForm.setVisible(true);
                     }
                     else
-                        JOptionPane.showMessageDialog(null, "The cancellation was not successful");
+                        JOptionPane.showMessageDialog(null, "The cancellation was not successful", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

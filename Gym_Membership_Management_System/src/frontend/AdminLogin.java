@@ -1,27 +1,25 @@
 package frontend;
 
-import com.sun.tools.javac.Main;
-
 import javax.swing.*;
+import java.util.Arrays;
 
 public class AdminLogin extends JFrame implements constants.LoginCredentials {
-    private JPanel TrainerLoginPanel;
+    private JPanel AdminLoginPanel;
     private JTextField usernameTF;
     private JPasswordField passTF;
     private JButton loginButton;
     private JButton cancelButton;
 
     public AdminLogin(MainWindow parent) {
-        setVisible(true);
         setSize(640, 480);
         setTitle("Admin Login");
         setLocationRelativeTo(null);
-        setContentPane(TrainerLoginPanel);
+        setContentPane(AdminLoginPanel);
+        setVisible(true);
 
         loginButton.addActionListener(e -> {
             String username = usernameTF.getText();
-            String password = new String(passTF.getPassword());
-            if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
+            if (username.equals(ADMIN_USERNAME) && Arrays.equals(passTF.getPassword(), ADMIN_PASSWORD.toCharArray())) {
                 System.out.println("Login Successful");
                 setVisible(false);
                 passTF.setText("");

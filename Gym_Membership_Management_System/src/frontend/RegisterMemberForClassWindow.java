@@ -66,28 +66,28 @@ public class RegisterMemberForClassWindow extends JFrame {
                 String classID = classIDTF.getText();
 
                 if(memID.isEmpty() || classID.isEmpty())
-                    JOptionPane.showMessageDialog(null, "Please fill all the fields");
+                    JOptionPane.showMessageDialog(null, "Please fill all the fields", "Error", JOptionPane.ERROR_MESSAGE);
                 else if (trainer.getListOfMembers().stream().noneMatch(member -> member.getSearchKey().equals(memID))) {
-                    JOptionPane.showMessageDialog(null, "The member with ID: " + memID + " does not exist!");
+                    JOptionPane.showMessageDialog(null, "The member with ID: " + memID + " does not exist!", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (trainer.getListOfClasses().stream().noneMatch(Class -> Class.getSearchKey().equals(classID))) {
-                    JOptionPane.showMessageDialog(null, "The class with ID: " + classID + " does not exist!");
+                    JOptionPane.showMessageDialog(null, "The class with ID: " + classID + " does not exist!", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if(LocalDate.now().isBefore(LocalDate.parse(dateTF.getText()))) {
-                    JOptionPane.showMessageDialog(null, "Registration date cannot be in the future!");
+                    JOptionPane.showMessageDialog(null, "Registration date cannot be in the future!", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if(trainer.getListOfRegistrations().stream().anyMatch(registration -> registration.getSearchKey().equals(memID + classID))) {
-                    JOptionPane.showMessageDialog(null, "The member with ID: " + memID + " is already registered for class with ID: " + classID);
+                    JOptionPane.showMessageDialog(null, "The member with ID: " + memID + " is already registered for class with ID: " + classID, "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     LocalDate registrationDate = LocalDate.parse(dateTF.getText());
 
                     if(trainer.registerMemberForClass(memID, classID, registrationDate))
                     {
                         setVisible(false);
-                        JOptionPane.showMessageDialog(null, "The member with ID: " + memID + " registered successfully for class with ID: " + classID);
+                        JOptionPane.showMessageDialog(null, "The member with ID: " + memID + " registered successfully for class with ID: " + classID, "Success", JOptionPane.INFORMATION_MESSAGE);
                         dispose();
                         mainForm.setVisible(true);
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(null, "Registration failed! No available seats");
+                        JOptionPane.showMessageDialog(null, "Registration failed! No available seats", "Error", JOptionPane.ERROR_MESSAGE);
                         classIDTF.setText("");
                         memIDTF.setText("");
                         dateTF.setText(dateFormat.format(java.sql.Date.valueOf(LocalDate.now())));

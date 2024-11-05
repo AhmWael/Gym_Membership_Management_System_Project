@@ -36,13 +36,13 @@ public class AddClassWindow extends JFrame {
                 String maxParti = maxPartiTF.getText();
 
                 if(classID.isEmpty() || className.isEmpty() || trainerID.isEmpty() || duration.isEmpty() || maxParti.isEmpty())
-                    JOptionPane.showMessageDialog(null, "Please fill all the fields");
+                    JOptionPane.showMessageDialog(null, "Please fill all the fields", "Error", JOptionPane.ERROR_MESSAGE);
                 else if (trainer.getListOfClasses().stream().anyMatch(Class -> Class.getSearchKey().equals(classID))) {
-                    JOptionPane.showMessageDialog(null, "The class with ID: " + classID + " already exists!");
+                    JOptionPane.showMessageDialog(null, "The class with ID: " + classID + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     setVisible(false);
                     trainer.addClass(classID, className, trainerID, Integer.parseInt(duration), Integer.parseInt(maxParti));
-                    JOptionPane.showMessageDialog(null, "The class with ID: " + classID + " added successfully");
+                    JOptionPane.showMessageDialog(null, "The class with ID: " + classID + " added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                     mainForm.setVisible(true);
                 }

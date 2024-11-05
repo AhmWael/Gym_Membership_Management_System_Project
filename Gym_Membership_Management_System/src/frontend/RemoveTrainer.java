@@ -12,6 +12,7 @@ public class RemoveTrainer extends JFrame {
     public RemoveTrainer() {
         setContentPane(RemoveTrainerPanel);
         setSize(320, 160);
+        setTitle("Remove Trainer");
         setLocationRelativeTo(null);
         setVisible(true);
 
@@ -31,5 +32,6 @@ public class RemoveTrainer extends JFrame {
                 }
             }
         });
+        getRootPane().setDefaultButton(button1);
     }
 }

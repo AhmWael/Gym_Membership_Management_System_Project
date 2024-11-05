@@ -25,14 +25,14 @@ public class TrainerLogin extends JFrame implements LoginCredentials {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(usernameTF.getText().isEmpty() || passTF.getPassword().length == 0) {
-                    JOptionPane.showMessageDialog(null, "Please fill in all fields");
+                    JOptionPane.showMessageDialog(null, "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if(usernameTF.getText().equals(TRAINER_USERNAME) && Arrays.equals(passTF.getPassword(), TRAINER_PASSWORD.toCharArray())) {
                     System.out.println("Login successful");
                     setVisible(false);
                     dispose();
                     new TrainerRoleWindow(new TrainerRole());
                 } else {
-                    JOptionPane.showMessageDialog(null, "Invalid credentials");
+                    JOptionPane.showMessageDialog(null, "Invalid credentials", "Error", JOptionPane.ERROR_MESSAGE);
                     usernameTF.setText("");
                     passTF.setText("");
                 }
