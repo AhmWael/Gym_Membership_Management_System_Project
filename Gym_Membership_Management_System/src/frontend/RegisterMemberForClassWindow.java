@@ -64,7 +64,6 @@ public class RegisterMemberForClassWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String memID = memIDTF.getText();
                 String classID = classIDTF.getText();
-                Date selectedDate = (Date) datePicker.getModel().getValue();
 
                 if(memID.isEmpty() || classID.isEmpty())
                     JOptionPane.showMessageDialog(null, "Please fill all the fields");
@@ -72,6 +71,10 @@ public class RegisterMemberForClassWindow extends JFrame {
                     JOptionPane.showMessageDialog(null, "The member with ID: " + memID + " does not exist!");
                 } else if (trainer.getListOfClasses().stream().noneMatch(Class -> Class.getSearchKey().equals(classID))) {
                     JOptionPane.showMessageDialog(null, "The class with ID: " + classID + " does not exist!");
+                } else if(LocalDate.now().isBefore(LocalDate.parse(dateTF.getText()))) {
+                    JOptionPane.showMessageDialog(null, "Registration date cannot be in the future!");
+                } else if(trainer.getListOfRegistrations().stream().anyMatch(registration -> registration.getSearchKey().equals(memID + classID))) {
+                    JOptionPane.showMessageDialog(null, "The member with ID: " + memID + " is already registered for class with ID: " + classID);
                 } else {
                     LocalDate registrationDate = LocalDate.parse(dateTF.getText());
 
