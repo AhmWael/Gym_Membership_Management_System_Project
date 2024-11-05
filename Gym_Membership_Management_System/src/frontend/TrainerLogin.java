@@ -27,7 +27,7 @@ public class TrainerLogin extends JFrame implements LoginCredentials {
                 if(usernameTF.getText().isEmpty() || passTF.getPassword().length == 0) {
                     JOptionPane.showMessageDialog(null, "Please fill in all fields");
                 } else if(usernameTF.getText().equals(TRAINER_USERNAME) && Arrays.equals(passTF.getPassword(), TRAINER_PASSWORD.toCharArray())) {
-                    JOptionPane.showMessageDialog(null, "Login successful");
+                    System.out.println("Login successful");
                     setVisible(false);
                     dispose();
                     new TrainerRoleWindow(new TrainerRole());

@@ -38,5 +38,6 @@ public class AdminLogin extends JFrame implements constants.LoginCredentials {
             dispose();
             parent.setVisible(true);
         });
+        getRootPane().setDefaultButton(loginButton);
     }
 }
